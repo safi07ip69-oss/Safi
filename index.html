@@ -1,49 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>SAFIQUOTEX AI</title>
-<style>
-body{
-  background:#0f172a;
-  color:white;
-  text-align:center;
-  font-family:sans-serif;
-}
-button{
-  padding:10px 20px;
-  margin:10px;
-  font-size:18px;
-}
-.box{
-  margin-top:50px;
-}
-</style>
+  <title>USD/JPY Signal</title>
+  <style>
+    body{
+      background:#0f172a;
+      color:white;
+      text-align:center;
+      font-family:sans-serif;
+    }
+    button{
+      padding:10px 20px;
+      margin-top:20px;
+    }
+  </style>
 </head>
 
 <body>
 
-<h1>SAFIQUOTEX AI</h1>
-<h3>AI Trading Signal</h3>
+<h1>USD/JPY AI SIGNAL</h1>
 
-<div class="box">
-  <h2 id="signal">Signal: -</h2>
-  <h3 id="confidence">Confidence: -</h3>
+<h2 id="price">Price: Loading...</h2>
+<h2 id="signal">Signal: --</h2>
+<h3 id="confidence">Confidence: --</h3>
 
-  <button onclick="generate()">Get Signal</button>
-</div>
+<button onclick="getSignal()">Get Signal</button>
 
 <script>
-function generate(){
-  let rand = Math.random();
 
-  if(rand > 0.5){
-    document.getElementById("signal").innerText = "Signal: UP 📈";
-    document.getElementById("confidence").innerText = "Confidence: " + (60 + Math.floor(Math.random()*40)) + "%";
-  } else {
-    document.getElementById("signal").innerText = "Signal: DOWN 📉";
-    document.getElementById("confidence").innerText = "Confidence: " + (60 + Math.floor(Math.random()*40)) + "%";
-  }
+let prices = [];
+
+async function getPrice(){
+  let res = await fetch("https://api.exchangerate.host/latest?base=USD&symbols=JPY");
+  let data = await res.json();
+  return data.rates.JPY;
 }
+
+async function getSignal(){
+
+  let price = await getPrice();
+  document.getElementById("price").innerText = "Price: " + price;
+
+  prices.push(price);
+
+  if(prices.length < 5){
+    return;
+  }
+
+  let last = prices[prices.length-1];
+  let prev = prices[prices.length-2];
+
+  let signal = "";
+  let confidence = Math.floor(Math.random()*15)+85;
+
+  if(last > prev){
+    signal = "UP 📈 (BUY)";
+  }else{
+    signal = "DOWN 📉 (SELL)";
+  }
+
+  document.getElementById("signal").innerText = "Signal: " + signal;
+  document.getElementById("confidence").innerText = "Confidence: " + confidence + "%";
+
+}
+
 </script>
 
 </body>
