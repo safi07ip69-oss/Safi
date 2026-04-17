@@ -1,195 +1,124 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>AI Chat</title>
-  <style>
-    body { background:#0f172a; color:white; font-family:sans-serif; }
-    
-    .header {
-      display:flex;
-      align-items:center;
-      padding:10px;
-      background:#020617;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Safi AI Market</title>
 
-    .profile {
-      width:40px;
-      height:40px;
-      border-radius:50%;
-      margin-right:10px;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: white;
+}
 
-    #chat {
-      height:300px;
-      overflow:auto;
-      padding:10px;
-    }
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: #020617;
+}
 
-    .user {
-      text-align:right;
-      margin:10px;
-    }
+header h1 {
+  color: #38bdf8;
+}
 
-    .ai {
-      text-align:left;
-      margin:10px;
-    }
+nav a {
+  margin: 0 10px;
+  color: white;
+  text-decoration: none;
+}
 
-    img.chat-img {
-      width:80px;
-      border-radius:10px;
-    }
-  </style>
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h2 {
+  font-size: 40px;
+}
+
+.hero p {
+  color: #94a3b8;
+}
+
+.btn {
+  background: #38bdf8;
+  padding: 12px 25px;
+  border: none;
+  color: black;
+  margin-top: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.card {
+  background: #020617;
+  padding: 20px;
+  margin: 10px;
+  display: inline-block;
+  width: 250px;
+  border-radius: 10px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #020617;
+  color: #94a3b8;
+}
+</style>
+
 </head>
 
 <body>
 
-<div class="header">
-  <!-- তোমার profile photo -->
-  <img src="https://i.ibb.co/4pDNDk1/avatar.png" class="profile">
-  <h3>My AI Chat</h3>
-</div>
+<header>
+  <h1>Safi AI</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Features</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
 
-<div id="chat"></div>
+<section class="hero">
+  <h2>Smart AI Trading System</h2>
+  <p>Get real-time signals and boost your trading profit</p>
+  <button class="btn">Get Started</button>
+</section>
 
-<input id="msg" placeholder="Type message...">
-<button onclick="send()">Send</button>
+<section class="section">
+  <h2>Features</h2>
 
-<script>
-function send(){
-  let msg = document.getElementById("msg").value;
-  let chat = document.getElementById("chat");
+  <div class="card">
+    <h3>AI Signals</h3>
+    <p>Accurate buy/sell signals powered by AI</p>
+  </div>
 
-  // user message with photo
-  chat.innerHTML += `
-  <div class="user">
-    <img src="https://i.ibb.co/4pDNDk1/avatar.png" class="profile">
-    <p>${msg}</p>
-  </div>`;
+  <div class="card">
+    <h3>Fast Analysis</h3>
+    <p>Instant market trend analysis</p>
+  </div>
 
-  // AI reply
-  setTimeout(()=>{
-    chat.innerHTML += `
-    <div class="ai">
-      <p>AI: Hello 👋</p>
-    </div>`;
-  },1000);
-}
-</script>
+  <div class="card">
+    <h3>User Friendly</h3>
+    <p>Simple and clean interface</p>
+  </div>
 
-</body>
-</html>
+</section>
 
+<section class="section">
+  <h2>Join Now</h2>
+  <p>Start your trading journey today</p>
+  <button class="btn">Sign Up</button>
+</section>
 
-
-
-
-
-
-
-
-<<div class="chat-box" id="chat"></div>
-
-<div class="input-box">
-  <input type="file" id="imgInput">
-  <button onclick="sendImage()">Send</button>
-</div>
-
-<script>
-function sendImage(){
-  let file = document.getElementById("imgInput").files[0];
-  let chat = document.getElementById("chat");
-
-  if(!file) return;
-
-  let reader = new FileReader();
-
-  reader.onload = function(e){
-    // show image
-    chat.innerHTML += `<div class="msg user"><img src="${e.target.result}"></div>`;
-
-    // fake AI reply
-    setTimeout(()=>{
-      chat.innerHTML += `<div class="msg bot">Amena AI: This looks like an image 📷 (Real AI needed for exact answer)</div>`;
-      chat.scrollTop = chat.scrollHeight;
-    },1000);
-  }
-
-  reader.readAsDataURL(file);
-}
-</script>
-
-</body>
-</html>
-
-
-
-gh<!
-.signal {
-  font-
-function generateSignal(){
-  // Fake price (demo)
-  let price = (Math.random() * (155 - 145) + 145).toFixed(3);
-  document.getElementById("price").innerText = "Price: " + price;
-
-  // Random signal
-  let signals = ["BUY", "SELL"];
-  let signal = signals[Math.floor(Math.random() * signals.length)];
-
-  let confidence = Math.floor(Math.random() * 20 + 80) + "%";
-
-  let signalEl = document.getElementById("signal");
-
-  signalEl.innerText = signal;
-  document.getElementById("confidence").innerText = "Confidence: " + confidence;
-
-  // Style change
-  signalEl.classList.remove("glow");
-
-  if(signal === "BUY"){
-    signalEl.style.color = "#22c55e";
-  } else {
-    signalEl.style.color = "#ef4444";
-  }
-
-  signalEl.classList.add("glow");
-}
-</script>
-
-</body>
-</html>
-
-
-
-
-  
-<head>
-  <
-
-  let price = await getPrice();
-  document.getElementById("price").innerText = "Price: " + price;
-
-  prices.push(price);
-
-  if(prices.length < 5){
-    return;
-  }
-
-  let last = prices[prices.length-1];
-  let prev = prices[prices.length-2];
-
-  let signal = "";
-  let confidence = Math.floor(Math.random()*15)+85;
-
-  if(last > prev){
-    signal = "UP 📈 (BUY)";
-  }else{
-    signal = "DOWN 📉 (SELL)";
-  }
-
-  document.getElementById("signal").innerText = "Signal: " + signal;
-  document.getElementById("confidence").innerText = "Confidence: " + confidence + "%";
-
-}
-
-<
+<footer>
+  <p>© 2026 Safi AI Market. All rights reserved.</p
