@@ -1,1 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SAFIQUOTEX AI</title>
+<style>
+body{
+  background:#0f172a;
+  color:white;
+  text-align:center;
+  font-family:sans-serif;
+}
+button{
+  padding:10px 20px;
+  margin:10px;
+  font-size:18px;
+}
+.box{
+  margin-top:50px;
+}
+</style>
+</head>
 
+<body>
+
+<h1>SAFIQUOTEX AI</h1>
+<h3>AI Trading Signal</h3>
+
+<div class="box">
+  <h2 id="signal">Signal: -</h2>
+  <h3 id="confidence">Confidence: -</h3>
+
+  <button onclick="generate()">Get Signal</button>
+</div>
+
+<script>
+function generate(){
+  let rand = Math.random();
+
+  if(rand > 0.5){
+    document.getElementById("signal").innerText = "Signal: UP 📈";
+    document.getElementById("confidence").innerText = "Confidence: " + (60 + Math.floor(Math.random()*40)) + "%";
+  } else {
+    document.getElementById("signal").innerText = "Signal: DOWN 📉";
+    document.getElementById("confidence").innerText = "Confidence: " + (60 + Math.floor(Math.random()*40)) + "%";
+  }
+}
+</script>
+
+</body>
+</html>
