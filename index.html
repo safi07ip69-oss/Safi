@@ -1,46 +1,113 @@
-
-gh<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>USD/JPY AI Signal</title>
+<title>Amena AI Vision</title>
 
 <style>
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0f172a;
-  color: white;
-  text-align: center;
+  margin:0;
+  font-family: Arial;
+  background:#0f172a;
+  color:white;
 }
 
-/* Header */
 .header {
-  padding: 15px;
-  font-size: 20px;
-  font-weight: bold;
-  background: #020617;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  background:#020617;
+  padding:15px;
+  text-align:center;
+  font-size:20px;
 }
 
-/* Card */
-.card {
-  background: #1e293b;
-  margin: 20px;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+.chat-box {
+  height:75vh;
+  overflow-y:auto;
+  padding:10px;
 }
 
-/* Price */
-.price {
-  font-size: 28px;
-  margin: 10px 0;
-  color: #38bdf8;
+.msg {
+  margin:10px;
+  padding:10px;
+  border-radius:10px;
+  max-width:70%;
 }
 
-/* Signal */
+.user {
+  background:#2563eb;
+  margin-left:auto;
+}
+
+.bot {
+  background:#1e293b;
+}
+
+.input-box {
+  display:flex;
+  padding:10px;
+  background:#020617;
+}
+
+input {
+  flex:1;
+  padding:10px;
+}
+
+button {
+  padding:10px;
+  margin-left:5px;
+  background:#22c55e;
+  border:none;
+  color:white;
+}
+
+img {
+  max-width:100%;
+  border-radius:10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">📷 Amena AI Vision</div>
+
+<div class="chat-box" id="chat"></div>
+
+<div class="input-box">
+  <input type="file" id="imgInput">
+  <button onclick="sendImage()">Send</button>
+</div>
+
+<script>
+function sendImage(){
+  let file = document.getElementById("imgInput").files[0];
+  let chat = document.getElementById("chat");
+
+  if(!file) return;
+
+  let reader = new FileReader();
+
+  reader.onload = function(e){
+    // show image
+    chat.innerHTML += `<div class="msg user"><img src="${e.target.result}"></div>`;
+
+    // fake AI reply
+    setTimeout(()=>{
+      chat.innerHTML += `<div class="msg bot">Amena AI: This looks like an image 📷 (Real AI needed for exact answer)</div>`;
+      chat.scrollTop = chat.scrollHeight;
+    },1000);
+  }
+
+  reader.readAsDataURL(file);
+}
+</script>
+
+</body>
+</html>
+
+
+
+gh<!
 .signal {
   font-size: 26px;
   margin: 15px 0;
